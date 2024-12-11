@@ -18,7 +18,7 @@ on:
 #env:
 
 jobs:
-  build_docker:
+  license_finder:
     runs-on: 'ubuntu-latest'
     steps:
 
