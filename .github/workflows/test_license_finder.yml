@@ -15,15 +15,17 @@ on:
   workflow_call:
 
 # Setting environment variables which can be used in the entire workflow (only in the current one)
-env:
-  # Used for build_docker job
-  CONTAINER_REGISTRY: registry.gitlab.com
+#env:
+#  # Used for build_docker job
+#  CONTAINER_REGISTRY: registry.gitlab.com
 
 jobs:
   license_finder:
     runs-on: 'ubuntu-latest'
     container:
       image: ${{ env.CONTAINER_REGISTRY }}/crosslend/docker/license-finder/main
+      env:
+        CONTAINER_REGISTRY: registry.gitlab.com
       credentials:
          username: ${{ vars.LICENSE_FINDER_GITLAB_REGISTRY_USERNAME }}
          password: ${{ secrets.LICENSE_FINDER_GITLAB_REGISTRY_PASSWORD }}
