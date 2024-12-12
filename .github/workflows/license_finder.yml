@@ -36,7 +36,6 @@ jobs:
         password: ${{ secrets.LICENSE_FINDER_GITLAB_REGISTRY_PASSWORD }}
         registry: ${{ env.CONTAINER_REGISTRY }}
         image: ${{ env.CONTAINER_REGISTRY }}/crosslend/docker/license-finder/main
-        options: -v "$(pwd):/$(basename "$(pwd)")" -w "/$(basename "$(pwd)")" --entrypoint /bin/bash registry.gitlab.com/crosslend/docker/license-finder/main:latest
         run: |
           source /usr/share/rvm/scripts/rvm; license_finder --prepare --composer-check-require-only=true --decisions-file=/doc/dependency_decisions.yml --python-version=3
 
