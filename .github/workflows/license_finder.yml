@@ -39,5 +39,8 @@ jobs:
           path: ${{ github.event.repository.name }}
 
       - name: Check license_finder version
-        run: source /usr/share/rvm/scripts/rvm; license_finder --version
+        with:
+          entrypoint: /docker-entrypoint.sh
+        run: |
+          license_finder --version
 
