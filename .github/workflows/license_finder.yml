@@ -44,7 +44,7 @@ jobs:
         username: ${{ vars.LICENSE_FINDER_GITLAB_REGISTRY_USERNAME }}
         password: ${{ secrets.LICENSE_FINDER_GITLAB_REGISTRY_PASSWORD }}
         registry: ${{ env.CONTAINER_REGISTRY }}
-        image: crosslend/docker/license-finder/main:latest
+        image: registry.gitlab.com/crosslend/docker/license-finder/main
         run: |
           license_finder --help
 
