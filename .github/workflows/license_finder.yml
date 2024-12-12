@@ -41,7 +41,7 @@ jobs:
       - name: Check license_finder version
         shell: bash
         run: |
-          source /usr/share/rvm/scripts/rvm; license_finder --prepare --composer-check-require-only=true --decisions-file=/doc/dependency_decisions.yml --python-version=3"
+          source /usr/share/rvm/scripts/rvm; license_finder --prepare --composer-check-require-only=true --decisions-file=/doc/dependency_decisions.yml --python-version=3
           #/usr/share/rvm/gems/ruby-3.2.3/bin/license_finder -prepare --composer-check-require-only=true --decisions-file=/doc/dependency_decisions.yml --python-version=3
 
           #source /usr/share/rvm/scripts/rvm
