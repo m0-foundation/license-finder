@@ -40,7 +40,7 @@ jobs:
 
       - name: Check license_finder version
         run: |
-          ls -la /usr/share/rvm/gems/ruby-3.2.3/bin
+          /usr/share/rvm/gems/ruby-3.2.3/bin/license_finder version
           #source /usr/share/rvm/scripts/rvm
           #license_finder --version
 
