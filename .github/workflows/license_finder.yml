@@ -1,0 +1,39 @@
+# Run License Finder
+
+name: license_finder
+
+on:
+  #pull_request:
+  #  types: [ opened, reopened ]
+  #push:
+  #  # Trigger on any branch push
+  #  branches:
+  #    - '**'  # Match any branch
+  workflow_dispatch:
+    branches:
+      - '**'  # Match any branch
+  workflow_call:
+
+# Setting environment variables which can be used in the entire workflow (only in the current one)
+#env:
+
+jobs:
+  build_docker:
+    runs-on: 'ubuntu-latest'
+    steps:
+
+      # Checking out the GitHub repository on the runner
+    - name: Checkout
+      uses: 'actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608'
+
+      # Uses github action to pull docker image and run commands
+    - name: Run the build process with Docker
+      uses: 'addnab/docker-run-action@4f65fabd2431ebc8d299f8e5a018d79a769ae185'
+      with:
+        username: ${{ vars.LICENSE_FINDER_GITLAB_REGISTRY_USERNAME }}
+        password: ${{ secrets.LICENSE_FINDER_GITLAB_REGISTRY_PASSWORD }}
+        registry: registry.gitlab.com
+        image: crosslend/docker/license-finder/main:latest
+        run: |
+          license_finder --help
+
