@@ -37,5 +37,5 @@ jobs:
         registry: ${{ env.CONTAINER_REGISTRY }}
         image: ${{ env.CONTAINER_REGISTRY }}/crosslend/docker/license-finder/main
         run: |
-          echo "pulled!"
+          license_finder version
 
