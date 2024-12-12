@@ -23,9 +23,9 @@ jobs:
   license_finder:
     runs-on: 'ubuntu-latest'
     container:
-      image: ${{ env.CONTAINER_REGISTRY }}/crosslend/docker/license-finder/main
       env:
         CONTAINER_REGISTRY: registry.gitlab.com
+      image: registry.gitlab.com/crosslend/docker/license-finder/main
       credentials:
          username: ${{ vars.LICENSE_FINDER_GITLAB_REGISTRY_USERNAME }}
          password: ${{ secrets.LICENSE_FINDER_GITLAB_REGISTRY_PASSWORD }}
