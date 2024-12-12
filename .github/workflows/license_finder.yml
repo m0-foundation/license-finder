@@ -37,6 +37,6 @@ jobs:
         registry: ${{ env.CONTAINER_REGISTRY }}
         image: ${{ env.CONTAINER_REGISTRY }}/crosslend/docker/license-finder/main
         run: |
-          license_finder --prepare --composer-check-require-only=true --decisions-file=/doc/dependency_decisions.yml --python-version=3
+          source /usr/share/rvm/scripts/rvm; license_finder --prepare --composer-check-require-only=true --decisions-file=/doc/dependency_decisions.yml --python-version=3
 
 
