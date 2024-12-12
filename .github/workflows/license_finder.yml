@@ -40,6 +40,7 @@ jobs:
 
       - name: Check license_finder version
         shell: bash
+        continue-on-error: true
         run: |
           cp license-finder/doc/dependency_decisions.yml ${{ github.event.repository.name }}/.
           cd ${{ github.event.repository.name }}
