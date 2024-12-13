@@ -15,25 +15,34 @@ on:
   workflow_call:
 
 # Setting environment variables which can be used in the entire workflow (only in the current one)
-#env:
 
 jobs:
-  build_docker:
+  license_finder:
     runs-on: 'ubuntu-latest'
+    container:
+      image: registry.gitlab.com/crosslend/docker/license-finder/main
+      credentials:
+         username: ${{ vars.LICENSE_FINDER_GITLAB_REGISTRY_USERNAME }}
+         password: ${{ secrets.LICENSE_FINDER_GITLAB_REGISTRY_PASSWORD }}
     steps:
+        # Checking out the GitHub license-finder repository on the runner
+      - name: Checkout
+        uses: 'actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608'
+        with:
+          path: license-finder
+          repository: m0-foundation/license-finder
 
-      # Checking out the GitHub repository on the runner
-    - name: Checkout
-      uses: 'actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608'
+        # Checking out the GitHub repository on the runner
+      - name: Checkout
+        uses: 'actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608'
+        with:
+          path: ${{ github.event.repository.name }}
 
-      # Uses github action to pull docker image and run commands
-    - name: Run the build process with Docker
-      uses: 'addnab/docker-run-action@4f65fabd2431ebc8d299f8e5a018d79a769ae185'
-      with:
-        username: ${{ vars.LICENSE_FINDER_GITLAB_REGISTRY_USERNAME }}
-        password: ${{ secrets.LICENSE_FINDER_GITLAB_REGISTRY_PASSWORD }}
-        registry: registry.gitlab.com
-        image: crosslend/docker/license-finder/main:latest
+      - name: Check license_finder version
+        shell: bash
+        continue-on-error: true
         run: |
-          license_finder --help
+          cp license-finder/doc/dependency_decisions.yml /tmp/.
+          cd ${{ github.event.repository.name }}
+          source /usr/share/rvm/scripts/rvm; license_finder --prepare --composer-check-require-only=true --decisions-file=~/tmp/dependency_decisions.yml --python-version=3
 
