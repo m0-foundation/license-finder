@@ -42,11 +42,7 @@ jobs:
         shell: bash
         continue-on-error: true
         run: |
-          ls -la
           cp license-finder/doc/dependency_decisions.yml /tmp/.
-          ls -la
-          ls -la /tmp
           cd ${{ github.event.repository.name }}
-          ls -la
           source /usr/share/rvm/scripts/rvm; license_finder --prepare --composer-check-require-only=true --decisions-file=~/tmp/dependency_decisions.yml --python-version=3
 
