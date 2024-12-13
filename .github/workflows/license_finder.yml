@@ -44,5 +44,5 @@ jobs:
         run: |
           cp license-finder/doc/dependency_decisions.yml ${{ github.event.repository.name }}/.
           cd ${{ github.event.repository.name }}
-          source /usr/share/rvm/scripts/rvm; license_finder --prepare --composer-check-require-only=true --decisions-file=license-finder/doc/dependency_decisions.yml --python-version=3
+          source /usr/share/rvm/scripts/rvm; license_finder --prepare --composer-check-require-only=true --decisions-file=/doc/dependency_decisions.yml --python-version=3
 

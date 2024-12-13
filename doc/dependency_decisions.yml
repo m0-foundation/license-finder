@@ -1,1 +1,481 @@
-test
+---
+- - :ignore_group
+  - development
+  - :who:
+    :why:
+    :versions: []
+    :when: 2021-07-20 08:51:54.400077900 Z
+- - :ignore_group
+  - develop
+  - :who:
+    :why:
+    :versions: []
+    :when: 2021-07-20 08:51:55.387657800 Z
+- - :ignore_group
+  - test
+  - :who:
+    :why:
+    :versions: []
+    :when: 2021-07-20 08:51:56.176329600 Z
+
+# Crosslend Licenses
+- - :permit
+  - crosslend
+  - :who: Stefan Kleff
+    :why: License for internal CrossLend libraries
+    :versions: []
+    :when: 2021-10-29 06:57:20.966642700 Z
+- - :permit
+  - CrossLend
+  - :who: Stefan Kleff
+    :why: License for internal CrossLend libraries
+    :versions: []
+    :when: 2021-10-29 06:57:20.966642700 Z
+
+# Crosslend Packages
+- - :approve
+  - crosslend/codeception
+  - :who: Stefan Kleff
+    :why: Internal library
+    :versions: []
+    :when: 2021-07-20 10:51:18.670493600 Z
+- - :approve
+  - crosslend/enum
+  - :who: Stefan Kleff
+    :why: Internal library
+    :versions: []
+    :when: 2021-07-20 10:51:24.932908800 Z
+- - :approve
+  - crosslend/airflow-client
+  - :who: Stefan Kleff
+    :why: Internal library
+    :versions: []
+    :when: 2021-07-28 16:15:37.490133300 Z
+- - :approve
+  - crosslend/auth-guard
+  - :who: Stefan Kleff
+    :why: Internal library
+    :versions: []
+    :when: 2021-07-26 11:24:35.269970600 Z
+- - :approve
+  - crosslend/common
+  - :who: Stefan Kleff
+    :why: Internal library
+    :versions: []
+    :when: 2021-07-26 11:24:50.777141300 Z
+- - :approve
+  - crosslend/doctrine-bundle
+  - :who: Stefan Kleff
+    :why: Internal library
+    :versions: []
+    :when: 2021-07-26 11:25:02.248167400 Z
+- - :approve
+  - crosslend/enum-sorting
+  - :who: Stefan Kleff
+    :why: Internal library
+    :versions: []
+    :when: 2021-07-26 11:25:15.676357200 Z
+- - :approve
+  - crosslend/messenger-bundle
+  - :who: Stefan Kleff
+    :why: Internal library
+    :versions: []
+    :when: 2021-07-26 11:25:29.537882200 Z
+- - :approve
+  - crosslend/monolog
+  - :who: Stefan Kleff
+    :why: Internal library
+    :versions: []
+    :when: 2021-07-26 11:25:41.712180600 Z
+- - :approve
+  - crosslend/outbox-bundle
+  - :who: Stefan Kleff
+    :why: Internal library
+    :versions: []
+    :when: 2021-07-26 11:25:53.857853400 Z
+- - :approve
+  - crosslend/permission-bundle
+  - :who: Stefan Kleff
+    :why: Internal library
+    :versions: []
+    :when: 2021-07-26 11:26:06.103270000 Z
+- - :approve
+  - crosslend/security-bundle
+  - :who: Stefan Kleff
+    :why: Internal library
+    :versions: []
+    :when: 2021-07-26 11:26:19.298735400 Z
+- - :approve
+  - ezyang/htmlpurifier
+  - :who: Stefan Kleff
+    :why: Project is using LGPL
+    :versions: []
+    :when: 2021-07-20 13:38:52.948788700 Z
+- - :approve
+  - airflow-dag
+  - :who: Toni Gruetze
+    :why: Internal library
+    :versions: []
+    :when: 2021-09-10 14:07:52.193223606 Z
+- - :approve
+  - godzilla
+  - :who: Toni Gruetze
+    :why: Internal library
+    :versions: [ ]
+    :when: 2021-09-10 14:07:52.193223606 Z
+- - :approve
+  - housekeeper
+  - :who: Toni Gruetze
+    :why: Internal library
+    :versions: [ ]
+    :when: 2021-09-10 14:07:52.193223606 Z
+- - :approve
+  - hydra
+  - :who: Toni Gruetze
+    :why: Internal library
+    :versions: [ ]
+    :when: 2021-09-10 14:07:52.193223606 Z
+- - :approve
+  - nessie
+  - :who: Toni Gruetze
+    :why: Internal library
+    :versions: [ ]
+    :when: 2021-09-10 14:07:52.193223606 Z
+- - :approve
+  - pydatautils
+  - :who: Toni Gruetze
+    :why: Internal library
+    :versions: [ ]
+    :when: 2021-09-10 14:07:52.193223606 Z
+- - :approve
+  - pyenum
+  - :who: Toni Gruetze
+    :why: Internal library
+    :versions: [ ]
+    :when: 2021-09-10 14:07:52.193223606 Z
+- - :approve
+  - quasimodo
+  - :who: Toni Gruetze
+    :why: Internal library
+    :versions: [ ]
+    :when: 2021-09-10 14:07:52.193223606 Z
+- - :approve
+  - yeti
+  - :who: Toni Gruetze
+    :why: Internal library
+    :versions: [ ]
+    :when: 2021-09-10 14:07:52.193223606 Z
+- - :approve
+  - crosslend-godzilla
+  - :who: Toni Gruetze
+    :why: Internal library
+    :versions: []
+    :when: 2021-10-13 14:33:52.528897852 Z
+- - :approve
+  - crosslend-housekeeper
+  - :who: Toni Gruetze
+    :why: Internal library
+    :versions: [ ]
+    :when: 2021-10-13 14:33:52.528897852 Z
+- - :approve
+  - crosslend-hydra
+  - :who: Toni Gruetze
+    :why: Internal library
+    :versions: [ ]
+    :when: 2021-10-13 14:33:52.528897852 Z
+- - :approve
+  - crosslend-nessie
+  - :who: Toni Gruetze
+    :why: Internal library
+    :versions: [ ]
+    :when: 2021-10-13 14:33:52.528897852 Z
+- - :approve
+  - crosslend-pydatautils
+  - :who: Toni Gruetze
+    :why: Internal library
+    :versions: [ ]
+    :when: 2021-10-13 14:33:52.528897852 Z
+- - :approve
+  - crosslend-pyenum
+  - :who: Toni Gruetze
+    :why: Internal library
+    :versions: [ ]
+    :when: 2021-10-13 14:33:52.528897852 Z
+- - :approve
+  - crosslend-enum
+  - :who: Toni Gruetze
+    :why: Internal library
+    :versions: [ ]
+    :when: 2021-10-13 14:33:52.528897852 Z
+- - :approve
+  - crosslend-quasimodo
+  - :who: Toni Gruetze
+    :why: Internal library
+    :versions: [ ]
+    :when: 2021-10-13 14:33:52.528897852 Z
+- - :approve
+  - crosslend-yeti
+  - :who: Toni Gruetze
+    :why: Internal library
+    :versions: [ ]
+    :when: 2021-10-13 14:33:52.528897852 Z
+- - :approve
+  - crosslend-analytics-api
+  - :who: Toni Gruetze
+    :why: Internal library
+    :versions: [ ]
+    :when: 2021-10-13 14:33:52.528897852 Z
+- - :approve
+  - analytics-api
+  - :who: Toni Gruetze
+    :why: Internal library
+    :versions: []
+    :when: 2021-09-15 10:29:02.736388004 Z
+- - :approve
+  - lambda-common-utils
+  - :who: Adam Stibal
+    :why: Internal library
+    :versions: []
+    :when: 2024-02-12 10:11:42.443858750 Z
+- - :approve
+  - protocol-common-utils
+  - :who: Adam Stibal
+    :why: Internal library
+    :versions: []
+    :when: 2024-06-21 13:02:48.959034122 Z
+
+# Permitted Licenses
+- - :permit
+  - ISC
+  - :who: Stefan Kleff
+    :why: Commercial usage granted
+    :versions: []
+    :when: 2021-07-28 14:50:37.297662100
+- - :permit
+  - BSD
+  - :who: Stefan Kleff
+    :why: Commercial usage granted
+    :versions: []
+    :when: 2021-07-28 15:30:21.821104700 Z
+- - :permit
+  - Simplified BSD
+  - :who: Stefan Kleff
+    :why: Commercial usage granted
+    :versions: []
+    :when: 2021-07-28 14:52:09.504764600 Z
+- - :permit
+  - MIT
+  - :who: Stefan Kleff
+    :why: Commercial usage granted
+    :versions: []
+    :when: 2021-07-20 10:44:37.052912400 Z
+- - :permit
+  - BSD-3-Clause
+  - :who: Stefan Kleff
+    :why: Commercial usage granted
+    :versions: []
+    :when: 2021-07-20 10:44:54.854494300 Z
+- - :permit
+  - Apache-2.0
+  - :who: Stefan Kleff
+    :why: Commercial usage granted
+    :versions: []
+    :when: 2021-07-20 10:45:59.363973100 Z
+- - :permit
+  - Mozilla Public License 2.0
+  - :who: Stefan Kleff
+    :why: Commercial usage granted
+    :versions: []
+    :when: 2021-07-28 14:54:58.358901200 Z
+- - :permit
+  - Mozilla Public License 2.0 (MPL 2.0)
+  - :who: Toni Gruetze
+    :why: Commercial usage granted
+    :versions: []
+    :when: 2023-08-31 13:22:04.021590570 Z
+- - :permit
+  - DBAD
+  - :who: Stefan Kleff
+    :why: Commercial usage granted
+    :versions: []
+    :when: 2021-07-28 14:56:21.603888600 Z
+- - :permit
+  - CC-BY-4.0
+  - :who: Stefan Kleff
+    :why: Commercial usage granted
+    :versions: []
+    :when: 2021-07-28 15:06:37.555109900 Z
+- - :permit
+  - WTFPL
+  - :who: Stefan Kleff
+    :why: Commercial usage granted
+    :versions: []
+    :when: 2021-07-28 15:07:15.294284200 Z
+- - :permit
+  - BSD Zero Clause License
+  - :who: Stefan Kleff
+    :why: Commercial usage granted
+    :versions: []
+    :when: 2021-07-28 15:10:07.814434900 Z
+- - :permit
+  - CC-BY-3.0
+  - :who: Stefan Kleff
+    :why: Commercial usage granted
+    :versions: []
+    :when: 2021-07-28 15:10:41.778054200 Z
+- - :permit
+  - AFL-2.0
+  - :who: Stefan Kleff
+    :why: Commercial usage granted
+    :versions: []
+    :when: 2021-07-28 15:11:48.156123900 Z
+- - :permit
+  - Unlicense
+  - :who: Stefan Kleff
+    :why: Commercial usage granted
+    :versions: []
+    :when: 2021-07-28 15:12:41.848008900 Z
+- - :permit
+  - CC0-1.0
+  - :who: Stefan Kleff
+    :why: Commercial usage granted
+    :versions: []
+    :when: 2021-07-28 15:13:16.063454300 Z
+- - :permit
+  - PSF
+  - :who: Toni Gruetze
+    :why: Commercial usage granted
+    :versions: []
+    :when: 2021-09-10 14:38:03.600626983 Z
+- - :permit
+  - Python-2.0
+  - :who: Toni Gruetze
+    :why: Commercial usage granted
+    :versions: []
+    :when: 2021-09-10 14:38:03.600626983 Z
+- - :permit
+  - LGPL
+  - :who: Toni Gruetze
+    :why: Commercial usage granted
+    :versions: []
+    :when: 2021-09-13 09:27:55.019538521 Z
+- - :permit
+  - GNU Library or Lesser General Public License (LGPL)
+  - :who: Toni Gruetze
+    :why: Commercial usage granted
+    :versions: []
+    :when: 2021-09-13 09:27:55.019538521 Z
+- - :permit
+  - GNU Lesser General Public License v3 (LGPLv3)
+  - :who: Stefan Kleff
+    :why: Commercial usage granted
+    :versions: []
+    :when: 2022-04-20 12:18:37.297662100 Z
+
+# Approved Packages (commercial)
+- - :approve
+  - ag-grid-enterprise
+  - :who: Stefan Kleff
+    :why: We bought the license
+    :versions: []
+    :when: 2021-07-28 15:05:43.665871900 Z
+- - :approve
+  - fintech
+  - :who: Stefan Kleff
+    :why: We bought the license
+    :versions: []
+    :when: 2022-04-20 12:18:37.297662100 Z
+
+
+# Approved Packages (open source)
+- - :approve
+  - behat/transliterator
+  - :who: Stefan Kleff
+    :why: Project is Artistic License
+    :versions: []
+    :when: 2021-07-26 11:30:08.728938400 Z
+- - :approve
+  - abab
+  - :who: Stefan Kleff
+    :why: project is using 3-Clause BSD license
+    :versions: []
+    :when: 2021-07-28 15:17:44.607670600 Z
+- - :approve
+  - async-foreach
+  - :who: Stefan Kleff
+    :why: project is using MIT license
+    :versions: []
+    :when: 2021-07-28 15:19:36.324740100 Z
+- - :approve
+  - chroma-js
+  - :who: Stefan Kleff
+    :why: project is using 3-Clause BSD license
+    :versions: []
+    :when: 2021-07-28 15:22:24.756477600 Z
+- - :approve
+  - cyclist
+  - :who: Stefan Kleff
+    :why: project is using MIT license
+    :versions: []
+    :when: 2021-07-28 15:23:02.575230700 Z
+- - :approve
+  - dot-object
+  - :who: Stefan Kleff
+    :why: project is using MIT license
+    :versions: []
+    :when: 2021-07-28 15:23:38.755897000 Z
+- - :approve
+  - fsevents
+  - :who: Stefan Kleff
+    :why: project is using MIT license
+    :versions: []
+    :when: 2021-07-28 15:24:25.005649700 Z
+- - :approve
+  - indexof
+  - :who: Stefan Kleff
+    :why: project is using MIT license
+    :versions: []
+    :when: 2021-07-28 15:25:34.537598900 Z
+- - :approve
+  - jshint
+  - :who: Stefan Kleff
+    :why: project is using MIT license
+    :versions: []
+    :when: 2021-07-28 15:26:24.267807100 Z
+- - :approve
+  - jsonify
+  - :who: Stefan Kleff
+    :why: Author states in readme that the license is public domain
+    :versions: []
+    :when: 2021-07-28 15:27:19.674616800 Z
+- - :approve
+  - pako
+  - :who: Stefan Kleff
+    :why: project is using MIT license
+    :versions: []
+    :when: 2021-07-28 15:29:34.614259900 Z
+- - :approve
+  - json-schema
+  - :who: Stefan Kleff
+    :why: project is using BSD 3-Clause or AFL-2.1
+    :versions: []
+    :when: 2021-07-28 15:45:31.690669600 Z
+- - :approve
+  - "@linusborg/vue-simple-portal"
+  - :who: Stefan Kleff
+    :why: project is using Apache-2.0 license
+    :versions: []
+    :when: 2021-07-28 15:16:41.150110100 Z
+- - :approve
+  - fastapi-permissions
+  - :who: Toni Gruetze
+    :why: Freely Distributable - https://github.com/holgi/fastapi-permissions/commit/c59e286fedb1534af1b5c052be9e358b005b0c8d
+    :versions: []
+    :when: 2021-09-15 10:31:07.833043877 Z
+- - :approve
+  - ifsnop/mysqldump-php
+  - :who: Armin Besirovic
+    :why: Used in db-neuralyzer/non-public service
+    :versions: []
+    :when: 2022-08-18 12:09:00.000000000 Z
+
