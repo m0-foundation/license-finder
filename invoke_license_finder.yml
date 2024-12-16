@@ -1,0 +1,15 @@
+# Build Docker images
+# Build Helm chart
+# Trigger deploy pipeline
+
+name: invoke_license_finder
+
+on:
+  workflow_dispatch:
+    branches:
+      - '**'
+
+jobs:
+  invoke-license-finder-workflow:
+    uses: m0-foundation/license-finder/.github/workflows/license_finder.yml@main
+    secrets: inherit
