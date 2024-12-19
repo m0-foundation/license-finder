@@ -1,57 +1,48 @@
 # license-finder
-This repository contains the workflow and config files for the license-finder tool.
+This repository contains a GitHub Actions workflow template and configuration for **license-finder**, a tool for scanning projects to validate software licenses in the code and its dependencies.
 
-It uses a customized image for https://github.com/pivotal/LicenseFinder
+Validation is performed against a whitelist to ensure compliance.
 
-This image is used to scan projects for dependencies 
-and  checks the licenses against a whitelist to ensure compliance.
+The Docker image for scanning is built and managed in https://gitlab.com/crosslend/docker/license-finder
+
+The configuration file [dependency_decisions.yml](https://github.com/m0-foundation/license-finder/blob/main/doc/dependency_decisions.yml) includes licenses and projects approved by The Thing GmbH's legal department (legal@m0.xyz).
+Please reach out to legal to approve new licenses & dependencies.
+
+
 
 # How to use the workflow
-The `.github/workflow/license_finder.yml` workflow can be invoked by other repositories.
+The `.github/workflows/license_finder.yml` workflow can be invoked by other repositories.
 
-Here the steps to follow:
+#### Steps:
 
-1. Copy the `invoke_license_finder.yml` workflow to the `.github/workflows` folder of your project repo
+1. Copy the `invoke_license_finder.yml` file into the `.github/workflows` folder of your project repository, commit and push it.
+2. In your repository's **Actions** tab, select `invoke_license_finder` from the list and run it.
+3. The workflow will pull the Docker image from https://gitlab.com/crosslend/docker/license-finder and use the [dependency_decisions.yml](https://github.com/m0-foundation/license-finder/blob/main/doc/dependency_decisions.yml) file from this repository as its configuration. A report will be generated for you to review.
 
-2. Go to the Actions tab of your project, select "`invoke_license_finder`" from the list and run it
 
 
-# Adding licences / manage configuration
+# Adding new licences / dependencies
 
 ### Background
 
-It **will** often happen that the licence_finder won't "approve" the licenses of the dependencies, since these dependencies do not have properly configured licenses-files in them.  In this case you have to 
+It **will** often happen that the **license_finder** won't "approve" the licenses of certain dependencies because their license files are not properly configured, missing or not yet approved. In such cases, you **must**:
 
-1. identify the dependencies and their licenses
+1. Identify the dependencies and their associated licenses.
+2. Reach out to the Legal department and obtain their ***written*** and ***documented*** approval for the specified licenses.
 
-2. reach out to our Legal-department and get their ***written*** & ***documented*** approval for the specified licenses
+***Before applying any changes to the configurations, ensure you have completed this process! Run the scanner locally on your project to identify the licenses, and reach out to Legal.***
 
-***So, before you apply any changes to the configurations - be sure to have done that in very first place! -> Run the scanner against your local project and identity the licenses & reach out to Legal.***
-
-
-
-### The practical part
-
->  *As of December 2024, we have only once central "dependency_decisions.yml" which keeps **all** the licenses and dependencies. This is subject to change in the scope of https://mzerolabs.atlassian.net/browse/CL-3293.*
+>  *As of December 2024, we have only once central "dependency_decisions.yml" which keeps **all** the licenses and dependencies. This is subject to change in the scope of https://mzerolabs.atlassian.net/browse/CL-3293, after which also project-specific "dependency_decisions"-files will be possible*
 
 
-Configuration of the image is done via adjustments of the
+Configuration of the license-finder image is done via adjustments of the
 
 ```
 doc/dependency_decisions.yml
 ```
-file in **this** projects directory. If your new project build is failing because the licenses are not permitted, adjust the ```doc/dependency_decisions.yml```.
+file in **this** projects directory. If your new project build is displaying that the licenses are not permitted, adjust the ```doc/dependency_decisions.yml```.
 
-#### Adjust & test the configuration with your project's specific "findings"
-
-To add and test your changes **locally**, **before** creating a merge-request here, do following:
-
-1. having the list of the depencencies from a first local run 
-```
-docker run -ti -v "$(pwd):/$(basename "$(pwd)")" -w "/$(basename "$(pwd)")" --entrypoint /bin/bash registry.gitlab.com/crosslend/docker/license-finder/main:latest -c "source /usr/share/rvm/scripts/rvm; license_finder --prepare --composer-check-require-only=true --decisions-file=/doc/dependency_decisions.yml --python-version=3"
-```
-
-#### Add new licenses/dependendies
+#### Add new licenses/dependencies
 
 Copy the `doc/dependency_decisions.yml`from the license-finder repository to your projects directory
 ```
@@ -59,17 +50,21 @@ cp license-finder/doc/dependency_decisions.yml ttg-frontend/
 ```
 enter your projects directory, and then, **per dependency** - run "license_finder approvals add" to add that new dependency:
 
+Example(please adjust for your case):
+
 ```
 docker run -ti -v $(pwd)/dependency_decisions.yml:/doc/dependency_decisions.yml --entrypoint /bin/bash registry.gitlab.com/crosslend/docker/license-finder/main:latest -c "source /usr/share/rvm/scripts/rvm; license_finder approvals add '@csstools/selector-resolve-nested' --why='some reason' --who='Vladimir Vecgailis'"
 ```
-If there are some licences to be approved - run "license_finder permitted_licenses add" **per license** to add that new license:
+If there are some licenses to be approved - run "license_finder permitted_licenses add" **per license** to add that new license:
+
+Example(please adjust for your case):
 
 ```
 docker run -ti -v $(pwd)/dependency_decisions.yml:/doc/dependency_decisions.yml --entrypoint /bin/bash registry.gitlab.com/crosslend/docker/license-finder/main:latest -c "source /usr/share/rvm/scripts/rvm; license_finder permitted_licenses add "GPL-5" --why='some licence approval reason' --who='Vladimir Vecgailis'"
 ```
 #### Verify your "decisions"
-Now, the file `dependency_decisions.yml` in your directory was modified.
-To verify whether the licence_finder will now properly handle all your approvals, re-run the license-finder with your local  `dependency_decisions.yml` mounted:
+Now, the file `dependency_decisions.yml` in your projects directory was modified.
+To verify whether the license-finder will now properly handle all your approvals, re-run the license-finder with your local  `dependency_decisions.yml` as configuration:
 
 ```
 docker run -ti -v "$(pwd):/$(basename "$(pwd)")" -v $(pwd)/dependency_decisions.yml:/doc/dependency_decisions.yml -w "/$(basename "$(pwd)")" --entrypoint /bin/bash registry.gitlab.com/crosslend/docker/license-finder/main:latest -c "source /usr/share/rvm/scripts/rvm; license_finder --prepare --composer-check-require-only=true --decisions-file=/doc/dependency_decisions.yml --python-version=3"
@@ -85,6 +80,21 @@ Upon a next build your projects "new" licenses/dependencies will be taken into a
 
 
 
+## Test any project locally
+
+To test **any** random project for the licenses & dependencies used do following:
+
+1. Clone the project in question
+   1. git clone https://github.com/foo/myproject/
+   2. cd myproproject
+2. Copy the configuration file [dependency_decisions.yml](https://github.com/m0-foundation/license-finder/blob/main/doc/dependency_decisions.yml)  to that projects folder
+3. Run
+
+```
+docker run -ti -v "$(pwd):/$(basename "$(pwd)")" -v $(pwd)/dependency_decisions.yml:/doc/dependency_decisions.yml -w "/$(basename "$(pwd)")" --entrypoint /bin/bash registry.gitlab.com/crosslend/docker/license-finder/main:latest -c "source /usr/share/rvm/scripts/rvm; license_finder --prepare --composer-check-require-only=true --decisions-file=/doc/dependency_decisions.yml --python-version=3"
+```
+
+This will scan the project "myproject" using the `doc/dependency_decisions.yml` configuration file from this repository here.
 
 ## Other infos
 
