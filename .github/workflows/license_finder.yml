@@ -38,7 +38,7 @@ jobs:
         with:
           path: ${{ github.event.repository.name }}
 
-      - name: Check license_finder version
+      - name: Run license_finder
         shell: bash
         continue-on-error: true
         run: |
@@ -46,11 +46,11 @@ jobs:
           cp license-finder/doc/dependency_decisions.yml /tmp/.
           cd ${{ github.event.repository.name }}
 
-          # Check if the project_specific_decisions_file.yml file exists before running license_finder
-          if [ -f .license-finder/project_specific_decisions_file.yml ]; then
-            echo "Running license_finder with project-specific decisions_file"
-            source /usr/share/rvm/scripts/rvm; license_finder inherited_decisions add ./.license-finder/project_specific_decisions_file.yml; license_finder --prepare --composer-check-require-only=true --decisions-file=~/tmp/dependency_decisions.yml --python-version=3
+          # Check if the project_specific_dependency_decisions.yml file exists before running license_finder
+          if [ -f .license-finder/project_specific_dependency_decisions.yml ]; then
+            echo "Running license_finder with project-specific dependency_decisions file"
+            source /usr/share/rvm/scripts/rvm; license_finder inherited_decisions add ./.license-finder/project_specific_dependency_decisions.yml; license_finder --prepare --composer-check-require-only=true --decisions-file=~/tmp/dependency_decisions.yml --python-version=3
           else
-            echo "Running license_finder without project-specific decisions_file"
+            echo "Running license_finder without project-specific dependency_decisions file"
             source /usr/share/rvm/scripts/rvm; license_finder --prepare --composer-check-require-only=true --decisions-file=~/tmp/dependency_decisions.yml --python-version=3
           fi

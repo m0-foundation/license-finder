@@ -32,23 +32,26 @@ It **will** often happen that the **license_finder** won't "approve" the license
 
 ***Before applying any changes to the configurations, ensure you have completed this process! Run the scanner locally on your project to identify the licenses, and reach out to Legal.***
 
->  *As of December 2024, we have only once central "dependency_decisions.yml" which keeps **all** the licenses and dependencies. This is subject to change in the scope of https://mzerolabs.atlassian.net/browse/CL-3293, after which also project-specific "dependency_decisions"-files will be possible*
+>  *As of February 2025, we have both one central "dependency\_decisions.yml" which keeps **almost all** the licenses and dependencies plus a project\_specific\_dependency\_decisions.yml file
 
 
 Configuration of the license-finder image is done via adjustments of the
 
 ```
 doc/dependency_decisions.yml
+
 ```
-file in **this** projects directory. If your new project build is displaying that the licenses are not permitted, adjust the ```doc/dependency_decisions.yml```.
+file in **this** projects directory and of the
+
+```
+.license-finder/project_specific_dependency_decisions.yml
+
+```
+file in the **specific project** directory.
 
 #### Add new licenses/dependencies
 
-Copy the `doc/dependency_decisions.yml`from the license-finder repository to your projects directory
-```
-cp license-finder/doc/dependency_decisions.yml ttg-frontend/
-```
-enter your projects directory, and then, **per dependency** - run "license_finder approvals add" to add that new dependency:
+Create the `.license-finder/project_specific_dependency_decisions.yml`, enter your projects directory, and then, **per dependency** - run "license_finder approvals add" to add that new dependency:
 
 Example(please adjust for your case):
 
